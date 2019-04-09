@@ -16,12 +16,12 @@ When("I click {string}", async function(string){
     return await this.clickOnAddContactBtn()
 });
 
-Then("Then I fill in {string} with {string}", async function(string, string2){
-     return "pending"
+Then("Then I fill in {string} with {string}", async function(field, content){
+    return await this.fillFormField(field.toLowerCase(), content)
 });
 
 Then("I should have {int} contact in my address book", async function(int){
-    return "pending"
+    return await this.clickOnAddContactBtn
 });
 
 Then("I should not see {string}", async function(string){
