@@ -10,7 +10,7 @@
 
 <body>
   <h1>Contacts</h1>
-  <button class="add-contact">Add Contact</button>
+  <button class="add-contact" id="add-contact" onclick="showForm()" type="submit">Add Contact</button>
   <div class="contact-list">
   </div>
   
@@ -28,7 +28,7 @@
     <label for="twitter">Twitter</label>
     <input id="contact-twitter" name="twitter" type="text">
 
-    <input class="save-contact" type="submit" value="Save contact">
+    <input class="save-contact" id="save-contact" type="submit" value="Save contact">
   </form>
   <script src="./dist/bundle.js"></script>
 </body>
