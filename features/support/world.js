@@ -46,10 +46,10 @@ class AddressBookWorld {
     btnSelectorFromName(btnName) {
         switch (btnName) {
             case 'add contact':
-                return '.add-contact'
+                return '#add-contact'
                 break
             case 'save contact':
-                return '.save-contact'    
+                return '#save-contact'    
                 break
             default:
                 throw `${btnName} button is not defined`

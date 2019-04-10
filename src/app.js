@@ -31,9 +31,26 @@
         }
     }
 
+const showForm = () => {
+    let form = document.getElementById("input_form")
+    form.style.display = "block";
+}
+
+const hideForm = () => {
+    let form = document.getElementById("input_form")
+    form.style.display = "none";
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    hideForm()
     renderContacts()
-    
+    const addContactButton = document.querySelector('#add-contact')
+    addContactButton.addEventListener('submit', event => {
+        event.preventDefault()
+        showForm()
+    })
+
+
     const addContactForm = document.querySelector('.new-contact-form')
     addContactForm.addEventListener('submit', event => {
         event.preventDefault()
@@ -66,3 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
         renderContacts()
     })
 })
+
+
+
+
+    
+
