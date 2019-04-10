@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let contacts = JSON.parse(storage.getItem('contacts')) || []
         contacts.push(contact)
         storage.setItem('contacts', JSON.stringify(contacts))
-        window.location.reload(true)
-
+        document.getElementById("input_form").reset();
+    
         renderContacts()
     })
 })
