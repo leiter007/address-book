@@ -10,10 +10,11 @@
 
 <body>
   <h1>Contacts</h1>
-  <button class="add-contact" id="add-contact" onclick="showForm()" type="submit">Add Contact</button>
+  <button class="add-contact" id="add-contact" type="submit" onclick="showForm()">Add Contact</button>
   <div class="contact-list">
   </div>
   
+  <div id = "div-input-form">
   <form action="#" class="new-contact-form" id="input_form">
     <label for="name">Name</label>
     <input id="contact-name" name="name" type="text">
@@ -30,6 +31,7 @@
 
     <input class="save-contact" id="save-contact" type="submit" value="Save contact">
   </form>
+  </div>
   <script src="./dist/bundle.js"></script>
 </body>
 

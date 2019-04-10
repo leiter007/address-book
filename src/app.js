@@ -31,10 +31,6 @@
         }
     }
 
-const showForm = () => {
-    let form = document.getElementById("input_form")
-    form.style.display = "block";
-}
 
 const hideForm = () => {
     let form = document.getElementById("input_form")
@@ -42,14 +38,23 @@ const hideForm = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    hideForm()
     renderContacts()
-    const addContactButton = document.querySelector('#add-contact')
-    addContactButton.addEventListener('submit', event => {
-        event.preventDefault()
-        showForm()
-    })
+    hideForm()
 
+    showForm = () => {
+        let form = document.getElementById("div-input-form");
+        if(form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    }
+
+    //const addContactButton = document.querySelector('#add-contact')
+    //addContactButton.addEventListener('submit', event => {
+    //  event.preventDefault()
+    // showForm()
+    //})
 
     const addContactForm = document.querySelector('.new-contact-form')
     addContactForm.addEventListener('submit', event => {
