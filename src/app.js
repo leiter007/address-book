@@ -11,10 +11,11 @@
             contacts.forEach(contact => {
                 let li = document.createElement('li')
                 li.id = contact.id
+                li.classList+= "border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
                 li.innerHTML = `
-                    <div class="card" style="background-color:lightgrey" id="${contact.id}">
+                    <div class="card" id="${contact.id}">
                         <div class="image">
-                            <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" height=20% width=20% />
+                            <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" height=10% width=10% />
                         </div>
                         <div class="content">
                             <h1>${ contact.name }</h1>
