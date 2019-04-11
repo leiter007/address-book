@@ -116,7 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
         storage.setItem('contacts', JSON.stringify(contacts))
         document.getElementById("input_form").reset();
     
-        renderContacts()
+        renderContacts();
+        hideForm()
     })
 
 })
