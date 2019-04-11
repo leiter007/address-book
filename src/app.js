@@ -37,7 +37,9 @@
             //Pushing the unordered list into the div, with the label "contact-list":
             div.appendChild(ul)
         
-        } else {
+        } 
+        
+        else {
             div.innerHTML ='<p>You have no contacts in your address book</p>'
         }
     }
@@ -69,7 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
             contact.id == id ? contacts.splice(contacts.indexOf(contact), 1) : false //Splice is a function that removes an item (contact) from an array. IndexOf = the index number in an array of that item (contact)
         })
         storage.setItem('contacts', JSON.stringify(contacts))
+        //after deleting contact, check if contacts array is empty, if so - then delete the contact array
+        contacts.length == 0 ? storage.removeItem("contacts") : false
+
         renderContacts()
+        //window.location.reload(true)
     })
     
     //When clicking button, showing contact input_form
