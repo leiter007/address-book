@@ -1,4 +1,5 @@
 // Pre-defined constants
+    
     const renderContacts = () => {
         const storage = window.localStorage
         const contacts = JSON.parse(storage.getItem('contacts'))
@@ -10,7 +11,7 @@
             contacts.forEach(contact => {
                 let li = document.createElement('li')
                 li.innerHTML = `
-                    <div class="card" style="background-color:lightgrey">
+                    <div class="card" style="background-color:lightgrey" id="${contact.id}">
                         <div class="image">
                             <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" height=20% width=20% />
                         </div>
@@ -21,7 +22,7 @@
                             ${ contact.email } |
                             <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
                             <button class="edit-contact" id="${contact.name}-edit">Edit contact</button>
-                            <button class="delete-contact" id="${contact.name}-delete">Delete contact</button>
+                            <button class="delete-contact" id="${contact.id}-delete">Delete contact</button>
                         </div>
                     </div>
                 `
@@ -33,13 +34,10 @@
         }
     }
 
+
 const showForm = () => {
     let form = document.getElementById("div-input-form")
-    if(form.style.display === "none") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
+    form.style.display = "block";
 }
 
 const hideForm = () => {
@@ -64,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addContactForm.addEventListener('submit', event => {
         event.preventDefault()
         const storage = window.localStorage
+        let contacts = JSON.parse(storage.getItem('contacts')) || []
 
         const {
             name,
@@ -84,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             twitter: twitter.value,
         }
         console.log(`Saving the following contact: ${JSON.stringify(contact)}`)
-        let contacts = JSON.parse(storage.getItem('contacts')) || []
+        
         contacts.push(contact)
         storage.setItem('contacts', JSON.stringify(contacts))
         document.getElementById("input_form").reset();
@@ -94,6 +93,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // When clicking on the Delete button of a contact, contact data is deleted
     
+    
+/*
+    const deleteBtnId = () => {
+        const contacts = JSON.parse(storage.getItem('contacts'))
+        contacts.forEach(contact => {id=contact.})
+        return ${contact.id}-delete
+    }        
+
+
+    const deleteContactBtn = document.getElementById(deleteBtnId)
+    deleteContactBtn.addEventListener('click', event => {
+        event.preventDefault()
+        deleteContact(i)
+        renderContacts
+    }, false)
+
+    const deleteContact = (i) => {
+        const storage = window.localStorage
+        let contacts = JSON.parse(storage.getItem('contacts'))
+        contacts.splice(i, 1)
+        storage.setItem('contacts', JSON.stringify(contacts))
+    }
+*/
 
 })
 
