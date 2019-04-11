@@ -10,6 +10,7 @@
             const ul = document.createElement('ul')
             contacts.forEach(contact => {
                 let li = document.createElement('li')
+                ul.classList += "flex content-start flex-wrap bg-grey-lighter"
                 li.id = contact.id
                 li.classList+= "border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
                 li.innerHTML = `
