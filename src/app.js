@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false)
 
     //When contact data is filled in, it is saved to localStorage in an array
-    const addContactForm = document.querySelector('.new-contact-form')
+    const addContactForm = document.querySelector('#input_form')
     addContactForm.addEventListener('submit', event => {
         event.preventDefault()
         const storage = window.localStorage
