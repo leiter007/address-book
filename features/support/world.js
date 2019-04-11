@@ -51,8 +51,8 @@ class AddressBookWorld {
             case 'save contact':
                 return '#save-contact'    
                 break
-            case 'delete contact':
-                return '.delete-contact' 
+            case 'delete':
+                return ".delete-contact"
                 break
             default:
                 throw `${btnName} button is not defined`

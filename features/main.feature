@@ -44,12 +44,7 @@ Feature: Create contacts
         And I should see "Jane Doe"
         And I should not see "You have no contacts in your address book"
 
-Feature: Delete contacts
-    As a user
-    In order to keep my contact list up to date
-    I would like to be able to delete contacts
-
-        Scenario: Delete a new contact
+    Scenario: Delete a new contact
         Given I visit the site
         Then I should see "Contacts"
         And I should see "You have no contacts in your address book"
@@ -65,5 +60,4 @@ Feature: Delete contacts
         And I should see "John Doe"
         And I should not see "You have no contacts in your address book"
         When I click "Delete"
-        Then I should have 0 contact in my address book
         Then I should see "You have no contacts in your address book"

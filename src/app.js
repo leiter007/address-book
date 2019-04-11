@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contacts.forEach(contact => {
             contact.id == id ? contacts.splice(contacts.indexOf(contact), 1) : false //Splice is a function that removes an item (contact) from an array. IndexOf = the index number in an array of that item (contact)
         })
+        console.log(contacts)
         storage.setItem('contacts', JSON.stringify(contacts))
         //after deleting contact, check if contacts array is empty, if so - then delete the contact array
         contacts.length == 0 ? storage.removeItem("contacts") : false
