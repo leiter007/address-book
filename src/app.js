@@ -79,11 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
         //window.location.reload(true)
     })
     
-    //When clicking button, showing contact input_form
+    //When clicking Add contacts button, showing contact input_form
     const addContactButton = document.getElementById("add-contact")
     addContactButton.addEventListener('click', event => {
         event.preventDefault()
         showForm()
+        addContactButton.style.display = "none";
     }, false)
 
     //When contact data is filled in, it is saved to localStorage in an array
@@ -118,6 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
         renderContacts();
         hideForm()
-    })
+        addContactButton.style.display = "block"
+    });
+
+    //When clicking cancel button, hide input form and clear input fields
+    const cancelButton = document.getElementById("cancel")
+    cancelButton.addEventListener('click', event => {
+        event.preventDefault()
+        document.getElementById("input_form").reset()
+        hideForm()
+        addContactButton.style.display = "block"
+    }, false)
 
 })
