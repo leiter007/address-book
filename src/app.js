@@ -36,6 +36,7 @@
             })
             //Pushing the unordered list into the div, with the label "contact-list":
             div.appendChild(ul)
+        
         } else {
             div.innerHTML ='<p>You have no contacts in your address book</p>'
         }
@@ -51,10 +52,25 @@ const hideForm = () => {
     form.style.display = "none";
 }
 //////////////////////////////////////////////////////////////
-//Code to execute after DOM is loaded
+//CODE TO EXECUTE WHEN DOM IS LOADED
 document.addEventListener('DOMContentLoaded', () => {
     renderContacts()
     hideForm()
+
+    // When clicking on the Delete button of a contact, contact data is deleted
+    let delete_button = document.querySelector('#contact-list')
+    const storage = window.localStorage
+    delete_button.addEventListener('click', event => {
+        let id = event.target.parentNode.id //selets the ID for the parentNode of the delete button (event in this case) = list item(li) in this case
+        let contacts = JSON.parse(storage.getItem('contacts')) || []
+        console.log(contacts)
+        //For-loop checking the contact for the ID of the contact and compares with parentNode ID = the contact-list "li" id (i.e the contact card)
+        contacts.forEach(contact => {
+            contact.id == id ? contacts.splice(contacts.indexOf(contact), 1) : false //Splice is a function that removes an item (contact) from an array. IndexOf = the index number in an array of that item (contact)
+        })
+        storage.setItem('contacts', JSON.stringify(contacts))
+        renderContacts()
+    })
     
     //When clicking button, showing contact input_form
     const addContactButton = document.getElementById("add-contact")
@@ -89,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
             twitter: twitter.value,
         }
         console.log(`Saving the following contact: ${JSON.stringify(contact)}`)
-        
         contacts.push(contact)
         storage.setItem('contacts', JSON.stringify(contacts))
         document.getElementById("input_form").reset();
@@ -97,40 +112,4 @@ document.addEventListener('DOMContentLoaded', () => {
         renderContacts()
     })
 
-    // When clicking on the Delete button of a contact, contact data is deleted
-    let delete_button = document.querySelector('#contact-list')
-    const storage = window.localStorage
-    delete_button.addEventListener('click', event => {
-        let id = event.target.parentNode.id //selets the ID for the parentNode of the delete button (event in this case) = list item(li) in this case
-        let contacts = JSON.parse(storage.getItem('contacts')) || []
-        console.log(contacts)
-        contacts.forEach(contact => {
-            contact.id == id ? contacts.splice(contacts.indexOf(contact), 1) : false //Splice is a function that removes an item (contact) from an array. IndexOf = the index number in an array of that item (contact)
-        })
-        storage.setItem('contacts', JSON.stringify(contacts))
-        renderContacts()
-    })
 })
-
-/*
-    const deleteBtnId = () => {
-        const contacts = JSON.parse(storage.getItem('contacts'))
-        contacts.forEach(contact => {id=contact.})
-        return ${contact.id}-delete
-    }        
-
-
-    const deleteContactBtn = document.getElementById(deleteBtnId)
-    deleteContactBtn.addEventListener('click', event => {
-        event.preventDefault()
-        deleteContact(i)
-        renderContacts
-    }, false)
-
-    const deleteContact = (i) => {
-        const storage = window.localStorage
-        let contacts = JSON.parse(storage.getItem('contacts'))
-        contacts.splice(i, 1)
-        storage.setItem('contacts', JSON.stringify(contacts))
-    }
-*/
