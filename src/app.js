@@ -3,13 +3,14 @@
     const renderContacts = () => {
         const storage = window.localStorage
         const contacts = JSON.parse(storage.getItem('contacts'))
-        let div = document.querySelector('.contact-list')
+        let div = document.querySelector('#contact-list')
 
         if (contacts) {
             div.innerHTML = ''
             const ul = document.createElement('ul')
             contacts.forEach(contact => {
                 let li = document.createElement('li')
+                li.id = contact.id
                 li.innerHTML = `
                     <div class="card" style="background-color:lightgrey" id="${contact.id}">
                         <div class="image">
@@ -21,19 +22,24 @@
                             <p>${ contact.notes }</p>
                             ${ contact.email } |
                             <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
-                            <button class="edit-contact" id="${contact.name}-edit">Edit contact</button>
-                            <button class="delete-contact" id="${contact.id}-delete">Delete contact</button>
                         </div>
                     </div>
                 `
+                //Create the delete button:
+                let button = document.createElement('button');
+                    button.classList += "delete-contact"; //classList += assigning the class to the created element
+                    button.innerHTML = "Delete"; //innerHTML here means the text on the button
+                    li.appendChild(button) //adds a "child" node to the end of the contact card list (li)
+                
+                //Pushing all cards (li) into the unordered list: 
                 ul.appendChild(li)
             })
+            //Pushing the unordered list into the div, with the label "contact-list":
             div.appendChild(ul)
         } else {
             div.innerHTML ='<p>You have no contacts in your address book</p>'
         }
     }
-
 
 const showForm = () => {
     let form = document.getElementById("div-input-form")
@@ -44,7 +50,7 @@ const hideForm = () => {
     let form = document.getElementById("div-input-form")
     form.style.display = "none";
 }
-
+//////////////////////////////////////////////////////////////
 //Code to execute after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     renderContacts()
@@ -92,8 +98,20 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     // When clicking on the Delete button of a contact, contact data is deleted
-    
-    
+    let delete_button = document.querySelector('#contact-list')
+    const storage = window.localStorage
+    delete_button.addEventListener('click', event => {
+        let id = event.target.parentNode.id //selets the ID for the parentNode of the delete button (event in this case) = list item(li) in this case
+        let contacts = JSON.parse(storage.getItem('contacts')) || []
+        console.log(contacts)
+        contacts.forEach(contact => {
+            contact.id == id ? contacts.splice(contacts.indexOf(contact), 1) : false //Splice is a function that removes an item (contact) from an array. IndexOf = the index number in an array of that item (contact)
+        })
+        storage.setItem('contacts', JSON.stringify(contacts))
+        renderContacts()
+    })
+})
+
 /*
     const deleteBtnId = () => {
         const contacts = JSON.parse(storage.getItem('contacts'))
@@ -116,11 +134,3 @@ document.addEventListener('DOMContentLoaded', () => {
         storage.setItem('contacts', JSON.stringify(contacts))
     }
 */
-
-})
-
-
-
-
-    
-
