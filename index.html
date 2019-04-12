@@ -39,7 +39,7 @@
         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="name">
           Name
         </label>
-        <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey" id="contact-name" name="name" type="text" required>
+        <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey" id="contact-name" name="name" type="text" value=""required>
       </div>
 
       <div class="w-full md:w-1/2 px-3">
@@ -149,6 +149,26 @@
       - When pressing save, it should delete the old contact and create the new.. Meaning we need to update the save function to check whether the ID is still there? If so, look it up and replace with new values?
     
   */
+const editContact = (id) => {
+  const storage = window.localStorage
+  let contacts = JSON.parse(storage.getItem('contacts')) || []
+  document.getElementById("div-input-form").style.display = "block";
+  for (i=0; i<contacts.length; i++) {
+    if (contacts[i].id == id) {
+      document.getElementById("contact-name").value = contacts[i].name
+      document.getElementById("contact-email").value = contacts[i].email
+      document.getElementById("contact-phone").value = contacts[i].phone
+      document.getElementById("contact-company").value = contacts[i].company
+      document.getElementById("contact-notes").value = contacts[i].notes
+      document.getElementById("contact-twitter").value = contacts[i].twitter
+    }
+    else false
+  }
+  
+
+  
+
+}
 
 
 
