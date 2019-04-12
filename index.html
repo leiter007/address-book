@@ -153,6 +153,9 @@ const editContact = (id) => {
   const storage = window.localStorage
   let contacts = JSON.parse(storage.getItem('contacts')) || []
   document.getElementById("div-input-form").style.display = "block";
+  document.getElementById("add-contact").style.display = "none";
+  let save_button = document.querySelector("#save-contact")
+
   for (i=0; i<contacts.length; i++) {
     if (contacts[i].id == id) {
       document.getElementById("contact-name").value = contacts[i].name
@@ -161,13 +164,12 @@ const editContact = (id) => {
       document.getElementById("contact-company").value = contacts[i].company
       document.getElementById("contact-notes").value = contacts[i].notes
       document.getElementById("contact-twitter").value = contacts[i].twitter
+      
+      contacts.splice(i, 1);
+
+      contacts.length == 0 ? storage.removeItem("contacts") : false
     }
-    else false
   }
-  
-
-  
-
 }
 
 
