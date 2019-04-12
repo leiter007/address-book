@@ -29,6 +29,7 @@
                                 <p class="p-2"> ${ contact.notes }</p>
                                 ${ contact.email } |
                                 <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
+                                <button class="delete-contact" onclick="deleteContact(${contact.id})" style="padding: 0.5rem; border-color: #dae1e7; margin-block-right: 1rem; background-color: white">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -41,11 +42,12 @@
                     li.appendChild(edit_button)
 
                 //Create the DELETE button:
-                let del_button = document.createElement('button');
+                /*let del_button = document.createElement('button');
                     del_button.style = "padding: 0.5rem; border-color: #dae1e7; background-color: white"
                     del_button.classList += "delete-contact"; //classList += assigning the class to the created element
                     del_button.innerHTML = "Delete"; //innerHTML here means the text on the button
                     li.appendChild(del_button) //adds a "child" node to the end of the contact card list (li)
+                */
 
                 //Pushing all cards (li) into the unordered list: 
                 ul.appendChild(li)
@@ -69,32 +71,29 @@ const hideForm = () => {
     let form = document.getElementById("div-input-form")
     form.style.display = "none";
 }
+   // When clicking on the DELETE button of a contact, contact data is deleted
+const deleteContact = (id) => {
+    const storage = window.localStorage
+    let contacts = JSON.parse(storage.getItem('contacts')) || []
+    //For-loop checking the contact for the ID of the contact and compares with parentNode ID = the contact-list "li" id (i.e the contact card)
+    contacts.forEach(cont => {
+        cont.id == id ? contacts.splice(contacts.indexOf(contact), 1) : false //Splice is a function that removes an item (contact) from an array. IndexOf = the index number in an array of that item (contact)
+    })
+    console.log(contacts)
+    storage.setItem('contacts', JSON.stringify(contacts))
+    //after deleting contact, check if contacts array is empty, if so - then delete the contact array
+    contacts.length == 0 ? storage.removeItem("contacts") : false
+
+    renderContacts()
+    //window.location.reload(true)
+}
+
 //////////////////////////////////////////////////////////////
 //CODE TO EXECUTE WHEN DOM IS LOADED
 document.addEventListener('DOMContentLoaded', () => {
     renderContacts()
     hideForm()
 
-    // When clicking on the DELETE button of a contact, contact data is deleted
-    let delete_button = document.querySelector('#contact-list')
-    const storage = window.localStorage
-    delete_button.addEventListener('click', event => {
-        let id = event.target.parentNode.id //selets the ID for the parentNode of the delete button (event in this case) = list item(li) in this case
-        let contacts = JSON.parse(storage.getItem('contacts')) || []
-        console.log(contacts)
-        //For-loop checking the contact for the ID of the contact and compares with parentNode ID = the contact-list "li" id (i.e the contact card)
-        contacts.forEach(contact => {
-            contact.id == id ? contacts.splice(contacts.indexOf(contact), 1) : false //Splice is a function that removes an item (contact) from an array. IndexOf = the index number in an array of that item (contact)
-        })
-        console.log(contacts)
-        storage.setItem('contacts', JSON.stringify(contacts))
-        //after deleting contact, check if contacts array is empty, if so - then delete the contact array
-        contacts.length == 0 ? storage.removeItem("contacts") : false
-
-        renderContacts()
-        //window.location.reload(true)
-    })
-    
     //When clicking ADD contacts button, showing contact input_form
     const addContactButton = document.getElementById("add-contact")
     addContactButton.addEventListener('click', event => {
@@ -139,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //When clicking EDIT button, showForm and pre-populate the fields with the ones already in the database
-    
 
     //When clicking CANCEL button, hide input form and clear input fields
     const cancelButton = document.getElementById("cancel")
