@@ -14,19 +14,19 @@
                 li.id = contact.id
                 li.classList+= "p-2 border border-teal rounded flex flex-wrap mb-2 bg-grey-lightest"
                 li.innerHTML = `
-                        <div class= "w-full md:w-1/3 pr-5 pt-3 border-r border-grey-light">
-                            <div class="card" id="${contact.id}">
+                        <div class= "w-full flex items-stretch md:w-1/3 h-2/3 pr-5 border-r border-grey-light">
+                            <div class="self-start flex-1" id="${contact.id}">
                                 <div class="image">
-                                <img src="https://ca-address-book.herokuapp.com/images/pine.jpg"/>
+                                <img src="avatar1.png" />
                                 </div>
                             </div>
                         </div>
                         
-                        <div class= "w-full md:w-2/3 pl-5 pt-3">
+                        <div class= "w-full md:w-2/3 pl-5 pt-1">
                             <div class="content">
-                                <h1> ${ contact.name }</h1>
-                                <h2> ${ contact.company }</h2>
-                                <p> ${ contact.notes }</p>
+                                <h1 class="pb-3 pt-1 text-30xl font-semibold border-b border-grey-light">${ contact.name }</h1>
+                                <h2 class="pt-1 text-lg font-semibold"> ${ contact.company }</h2>
+                                <p class="p-2"> ${ contact.notes }</p>
                                 ${ contact.email } |
                                 <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
                             </div>
