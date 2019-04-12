@@ -140,32 +140,18 @@
     contacts.length == 0 ? storage.removeItem("contacts") : false
     window.location.reload(true)
     }
-  
 
     // When clicking on the EDIT button of a contact:
   /*  
-      - Get the data for right contact (use the for loop again?)
+      - Get the data for right contact in the form (use the for loop again?)
       - showForm
       - pre-populate the right fields in the form with the values from the database ("value=" maybe?)
       - When pressing save, it should delete the old contact and create the new.. Meaning we need to update the save function to check whether the ID is still there? If so, look it up and replace with new values?
     
   */
 
-  const editContact = (id) => {
-    showForm()
-    const storage = window.localStorage
-    let contacts = JSON.parse(storage.getItem('contacts')) || []
-    contacts.forEach(contact => {
-        contact.id == id ?
-          document.getElementById()
-          })
-    console.log(contacts)
-    storage.setItem('contacts', JSON.stringify(contacts))
-    //after deleting contact, check if contacts array is empty, if so - then delete the contact array
-    contacts.length == 0 ? storage.removeItem("contacts") : false
-    window.location.reload(true)
-   }
-  
+
+
 
   </script>
 

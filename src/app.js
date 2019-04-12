@@ -30,28 +30,10 @@
                                 ${ contact.email } |
                                 <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
                                 <button class="delete-contact" onclick="deleteContact(${contact.id})" style="padding: 0.5rem; border-color: #b8c2cc; margin-block-right: 1rem; background-color: white">Delete</button>
-                                <button class="edit-contact" onclick="editContact(${contact.id})" style="padding: 0.5rem; border-color: #b8c2cc; margin-block-right: 1rem; background-color: white"><Edit</button>
+                                <button class="edit-contact" onclick="editContact(${contact.id})" style="padding: 0.5rem; border-color: #b8c2cc; margin-block-right: 1rem; background-color: white">Edit</button>
                             </div>
                         </div>
-                        <script type="text/javascript">
-
-                        const deleteContact = (id) => {
-                            const storage = window.localStorage
-                            let contacts = JSON.parse(storage.getItem('contacts')) || []
-                            //For-loop checking the contact for the ID of the contact and compares with parentNode ID = the contact-list "li" id (i.e the contact card)
-                            contacts.forEach(contact => {
-                                contact.id == id ? contacts.splice(contacts.indexOf(contact), 1) : false //Splice is a function that removes an item (contact) from an array. IndexOf = the index number in an array of that item (contact)
-                            })
-                            console.log(contacts)
-                            storage.setItem('contacts', JSON.stringify(contacts))
-                            //after deleting contact, check if contacts array is empty, if so - then delete the contact array
-                            contacts.length == 0 ? storage.removeItem("contacts") : false
-                            window.location.reload(true)
-                            }
-                            
-                        </script>
                     </div>
-                    
                 `
                 //Create the EDIT button:
                  /*llet edit_button = document.createElement('button');
