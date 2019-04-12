@@ -33,12 +33,20 @@
                         </div>
                     </div>
                 `
-                //Create the delete button:
-                let button = document.createElement('button');
-                    button.classList += "delete-contact"; //classList += assigning the class to the created element
-                    button.innerHTML = "Delete"; //innerHTML here means the text on the button
-                    li.appendChild(button) //adds a "child" node to the end of the contact card list (li)
-                
+                //Create the EDIT button:
+                let edit_button = document.createElement('button');
+                    edit_button.style = "padding: 0.5rem; border-color: #dae1e7; margin-block-right: 1rem; background-color: white"
+                    edit_button.classList += "edit-contact";
+                    edit_button.innerHTML = "Edit";
+                    li.appendChild(edit_button)
+
+                //Create the DELETE button:
+                let del_button = document.createElement('button');
+                    del_button.style = "padding: 0.5rem; border-color: #dae1e7; background-color: white"
+                    del_button.classList += "delete-contact"; //classList += assigning the class to the created element
+                    del_button.innerHTML = "Delete"; //innerHTML here means the text on the button
+                    li.appendChild(del_button) //adds a "child" node to the end of the contact card list (li)
+
                 //Pushing all cards (li) into the unordered list: 
                 ul.appendChild(li)
             })
@@ -67,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderContacts()
     hideForm()
 
-    // When clicking on the Delete button of a contact, contact data is deleted
+    // When clicking on the DELETE button of a contact, contact data is deleted
     let delete_button = document.querySelector('#contact-list')
     const storage = window.localStorage
     delete_button.addEventListener('click', event => {
@@ -87,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //window.location.reload(true)
     })
     
-    //When clicking Add contacts button, showing contact input_form
+    //When clicking ADD contacts button, showing contact input_form
     const addContactButton = document.getElementById("add-contact")
     addContactButton.addEventListener('click', event => {
         event.preventDefault()
@@ -95,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addContactButton.style.display = "none";
     }, false)
 
-    //When contact data is filled in, it is saved to localStorage in an array
+    //When CONTACT DATA is filled in, it is saved to localStorage in an array
     const addContactForm = document.querySelector('#input_form')
     addContactForm.addEventListener('submit', event => {
         event.preventDefault()
@@ -130,7 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
         addContactButton.style.display = "block"
     });
 
-    //When clicking cancel button, hide input form and clear input fields
+    //When clicking EDIT button, showForm and pre-populate the fields with the ones already in the database
+    
+
+    //When clicking CANCEL button, hide input form and clear input fields
     const cancelButton = document.getElementById("cancel")
     cancelButton.addEventListener('click', event => {
         event.preventDefault()
