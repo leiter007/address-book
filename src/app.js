@@ -6,24 +6,30 @@
         let div = document.querySelector('#contact-list')
 
         if (contacts) {
-            div.innerHTML = ''
+            div.innerHTML = '<div class="flex flex-wrap">'
             const ul = document.createElement('ul')
             contacts.forEach(contact => {
                 let li = document.createElement('li')
-                ul.classList += "flex content-start flex-wrap bg-grey-lighter"
+                ul.classList += "bg-white text-xs p-3"
                 li.id = contact.id
-                li.classList+= "border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+                li.classList+= "p-2 border border-teal rounded flex flex-wrap mb-2 bg-grey-lightest"
                 li.innerHTML = `
-                    <div class="card" id="${contact.id}">
-                        <div class="image">
-                            <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" height=10% width=10% />
+                        <div class= "w-full md:w-1/3 pr-5 pt-3 border-r border-grey-light">
+                            <div class="card" id="${contact.id}">
+                                <div class="image">
+                                <img src="https://ca-address-book.herokuapp.com/images/pine.jpg"/>
+                                </div>
+                            </div>
                         </div>
-                        <div class="content">
-                            <h1>${ contact.name }</h1>
-                            <h2>${ contact.company }</h2>
-                            <p>${ contact.notes }</p>
-                            ${ contact.email } |
-                            <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
+                        
+                        <div class= "w-full md:w-2/3 pl-5 pt-3">
+                            <div class="content">
+                                <h1> ${ contact.name }</h1>
+                                <h2> ${ contact.company }</h2>
+                                <p> ${ contact.notes }</p>
+                                ${ contact.email } |
+                                <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
+                            </div>
                         </div>
                     </div>
                 `
@@ -42,7 +48,7 @@
         } 
         
         else {
-            div.innerHTML ='<p>You have no contacts in your address book</p>'
+            div.innerHTML ='<p class="text-2xl text-center">You have no contacts in your address book</p>'
         }
     }
 

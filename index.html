@@ -10,11 +10,11 @@
   <title>Address book</title>
 </head>
 
-<body class= "text-grey-darker">
+<body class= "text-grey-darker text-sm">
   
   <div class = "bg-teal text-grey-lightest bold mb-2 p-2 border-b border-grey-light flex flex-wrap">
   
-    <div class= "w-full md:w-1/3 px-3 mb-6 md:mb-0 flex flex-wrap">
+    <div class= "w-full md:w-1/3 px-8 mb-6 md:mb-0 flex flex-wrap">
     <button class="bg-teal-light text-grey-lightest font-semibold hover:bg-grey-lightest hover:text-teal-light py-2 px-4 self-center rounded" id="add-contact">
       Add contact
     </button>
@@ -93,14 +93,14 @@
       </div>
 
       <div class="flex items-end w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <div class="flex-grow w-full md:w-1/2 px-3 mb-6 md:mb-0 border-r border-grey-ligh">
-          <button class="bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" id="save-contact">
+        <div class="flex-grow w-full md:w-1/2 px-3 mb-6 md:mb-0 border-r border-grey-light">
+          <button class="w-full bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" id="save-contact">
             Save
           </button>  
         </div>
 
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <button class="bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" id="cancel">
+          <button class="w-full bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" id="cancel">
             Cancel
           </button>  
         </div>
@@ -115,8 +115,12 @@
 </div>
 </div>
 
-  <div class="contact-list" id="contact-list">
+<div class="pt-8 flex justify-center">
+  <div class="w-2/3" >
+    <div class="contact-list" id="contact-list">
   </div>
+</div>
+</div>
 
   <script src="./dist/bundle.js"></script>
 </body>
