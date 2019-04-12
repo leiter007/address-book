@@ -26,6 +26,7 @@
                             <div class="content">
                                 <h1 class="pb-3 pt-1 text-30xl font-semibold border-b border-grey-light">${ contact.name }</h1>
                                 <h2 class="pt-1 text-lg font-semibold"> ${ contact.company }</h2>
+                                <h2 class="pt-1 text-sm font-semibold"> ${ contact.phone }</h2>
                                 <p class="p-2"> ${ contact.notes }</p>
                                 ${ contact.email } |
                                 <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
@@ -113,11 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
             notes: notes.value,
             twitter: twitter.value,
         }
+
+        //SAVING
         console.log(`Saving the following contact: ${JSON.stringify(contact)}`)
         contacts.push(contact)
         storage.setItem('contacts', JSON.stringify(contacts))
         document.getElementById("input_form").reset();
-    
+        
+        //Cleaning up after saving
         renderContacts();
         hideForm()
         addContactButton.style.display = "block"

@@ -14,6 +14,12 @@ class AddressBookWorld {
     async closeHomePage(){
         await this.browser.close()
     }
+
+    /* async refreshHomePage(){
+        await this.browser.window.location.reload(true)
+    }
+    */
+
     async pageHasTextContent(expectedContent){
         const pageContent = await this.page.content()
         const actualContent = pageContent.match(expectedContent)[0]
@@ -43,6 +49,7 @@ class AddressBookWorld {
 
         expect(actualContent).to.be.eq(null)
     }
+
     btnSelectorFromName(btnName) {
         switch (btnName) {
             case 'add contact':
@@ -53,6 +60,9 @@ class AddressBookWorld {
                 break
             case 'delete':
                 return ".delete-contact"
+                break
+            case 'edit':
+                return ".edit-contact"
                 break
             default:
                 throw `${btnName} button is not defined`

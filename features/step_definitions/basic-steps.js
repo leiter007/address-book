@@ -1,4 +1,4 @@
-const { After, Given, Then, When} = require("cucumber");
+const {After, Given, Then, When} = require("cucumber");
 
 After(async function() {
     return await this.closeHomePage()
@@ -26,4 +26,9 @@ Then("I should have {int} contact in my address book", async function(contactCou
 
 Then("I should not see {string}", async function(content){
     return await this.pageDoesNotHaveTextContent(content)
-})
+});
+
+/*Then("I refresh the page", async function() {
+        return await this.refreshHomePage()
+});
+*/
