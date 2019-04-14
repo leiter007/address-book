@@ -1,79 +1,65 @@
 // Pre-defined constants
     
-    const renderContacts = () => {
-        const storage = window.localStorage
-        const contacts = JSON.parse(storage.getItem('contacts'))
-        let div = document.querySelector('#contact-list')
+const renderContacts = () => {
+    const storage = window.localStorage
+    const contacts = JSON.parse(storage.getItem('contacts'))
+    let div = document.querySelector('#contact-list')
 
-        if (contacts) {
-            div.innerHTML = '<div class="flex flex-wrap">'
-            const ul = document.createElement('ul')
-            contacts.forEach(contact => {
-                let li = document.createElement('li')
-                ul.classList += "bg-white text-xs p-3"
-                li.id = contact.id
-                li.classList+= "p-2 border border-teal rounded flex flex-wrap mb-2 bg-grey-lightest"
-                li.innerHTML = `
-                        <div class= "w-full flex items-stretch md:w-1/3 h-2/3 pr-5 border-r border-grey-light">
-                            <div class="self-start flex-1" id="${contact.id}">
-                                <div class="image">
-                                <img src="avatar1.png" />
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class= "w-full md:w-2/3 pl-5 pt-1">
-                            <div class="content">
-                                <h1 class="pb-3 pt-1 text-30xl font-semibold border-b border-grey-light">${ contact.name }</h1>
-                                <h2 class="pt-1 text-lg font-semibold"> ${ contact.company }</h2>
-                                <h2 class="pt-1 text-sm font-semibold"> ${ contact.phone }</h2>
-                                <p class="p-2"> ${ contact.notes }</p>
-                                ${ contact.email } |
-                                <a href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a>
-                                <button class="delete-contact" onclick="deleteContact(${contact.id})" style="padding: 0.5rem; border-color: #b8c2cc; margin-block-right: 1rem; background-color: white">Delete</button>
-                                <button class="edit-contact" onclick="editContact(${contact.id})" style="padding: 0.5rem; border-color: #b8c2cc; margin-block-right: 1rem; background-color: white">Edit</button>
+    if (contacts) {
+        div.innerHTML = '<div class="flex flex-wrap">'
+        const ul = document.createElement('ul')
+        contacts.forEach(contact => {
+            let li = document.createElement('li')
+            ul.classList += "bg-grey-lighter text-xs p-3"
+            li.id = contact.id
+            li.classList+= "container mx-auto my-10 w-full max-w-sm content-center p-6 rounded-lg flex flex-wrap mb-6 bg-white"
+            li.innerHTML = `
+                <link rel="stylesheet" href="style.css">
+                    <div class= "w-full flex content-center items-stretch md:w-1/3 h-2/3 p-5">
+                        <div class="flex-1" id="${contact.id}">
+                            <div class="content-center text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class ="fill-current text-teal inline-block h-20 w-20" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z"/></svg>
+                                <button class="delete-contact" onclick="deleteContact(${contact.id})" style="text-align: center; padding: 5px; margin: auto; display: inline-block; text-decoration: none; color: #B8C2CC">Delete</button>
+                                <button class="edit-contact" onclick="editContact(${contact.id})" style="text-align: center; padding: 5px; margin: auto; display: inline-block; text-decoration: none; color: #B8C2CC">Edit</button>
                             </div>
                         </div>
                     </div>
-                `
-                //Create the EDIT button:
-                 /*llet edit_button = document.createElement('button');
-                    edit_button.style = "padding: 0.5rem; border-color: #dae1e7; margin-block-right: 1rem; background-color: white"
-                    edit_button.classList += "edit-contact";
-                    edit_button.innerHTML = "Edit";
-                    li.appendChild(edit_button)
-                */
+                    
+                    <div class= "self-center align-middle w-full p-3 md:w-2/3">
+                        <div class="self-center content-center align-middle">
+                            <h1 class="pb-1 text-30xl font-semibold border-b border-teal ">${ contact.name }</h1>
+                            <h2 class="pt-1 pb-2 text-lg font-semibold"> ${ contact.company }</h2>
+                            <p class="pt-1 text-sm"> ${ contact.phone }</p>
+                            <p class="pt-1 pb-1 text-sm"> ${ contact.notes }</p>
+                            <a class="pt-2 text-sm no-underline text-grey-darker hover:text-teal" href="mailto:${ contact.email }">${ contact.email }</a> |
+                            <a class="pt-2 text-sm no-underline text-grey-darker hover:text-teal" href="https://www.twitter.com/${ contact.twitter }">@${contact.twitter}</a></p>
+                        </div>
+                    </div>
 
-                //Create the DELETE button:
-                /*let del_button = document.createElement('button');
-                    del_button.style = "padding: 0.5rem; border-color: #dae1e7; background-color: white"
-                    del_button.classList += "delete-contact"; //classList += assigning the class to the created element
-                    del_button.innerHTML = "Delete"; //innerHTML here means the text on the button
-                    li.appendChild(del_button) //adds a "child" node to the end of the contact card list (li)
-                */
+                    </div>
+            `
 
-                //Pushing all cards (li) into the unordered list: 
-                ul.appendChild(li)
+            //Pushing all cards (li) into the unordered list: 
+            ul.appendChild(li)
             })
-            //Pushing the unordered list into the div, with the label "contact-list":
-            div.appendChild(ul)
+        //Pushing the unordered list into the div, with the label "contact-list":
+        div.appendChild(ul)    
+    } 
         
-        } 
-        
-        else {
-            div.innerHTML ='<p class="text-2xl text-center">You have no contacts in your address book</p>'
-        }
+    else {
+        div.innerHTML ='<p class="text-2xl text-center">You have no contacts in your address book</p>'
     }
+}
 
 const showForm = () => {
     let form = document.getElementById("div-input-form")
     form.style.display = "block";
-    }
+}
 
 const hideForm = () => {
     let form = document.getElementById("div-input-form")
     form.style.display = "none";
-    }
+}
 
 //////////////////////////////////////////////////////////////
 //CODE TO EXECUTE WHEN DOM IS LOADED
@@ -127,8 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         addContactButton.style.display = "block"
     });
 
-    //When clicking EDIT button, showForm and pre-populate the fields with the ones already in the database
-
     //When clicking CANCEL button, hide input form and clear input fields
     const cancelButton = document.getElementById("cancel")
     cancelButton.addEventListener('click', event => {
@@ -137,5 +121,4 @@ document.addEventListener('DOMContentLoaded', () => {
         hideForm()
         addContactButton.style.display = "block"
     }, false)
-
 })
