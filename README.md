@@ -73,4 +73,8 @@ This project utilizes the MIT open-source license. https://opensource.org/licens
 
 # Acknowledgments
 
-Kudos to [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) for the README template 
+Kudos to [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) for the README template
+
+Delete contact function code inspiration - [<i>Address Book</i>](https://github.com/aleciabenjamin/Address_Book) by [**aleciabenjamin**](https://github.com/aleciabenjamin), [**perhegg**](https://github.com/perhegg) and [**yanqiuzhang**](https://github.com/yanqiuzhang).
+
+Edit contact function code inspiration - [<i>Address Book</i>](https://github.com/raptorf1/address_book_challenge) by [**raptorf1**](https://github.com/raptorf1) and [**stefankarlberg**](https://github.com/stefankarlberg). 
