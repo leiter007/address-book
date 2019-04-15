@@ -152,6 +152,9 @@
     const storage = window.localStorage
     let contacts = JSON.parse(storage.getItem('contacts')) || []
     document.getElementById("add-contact").style.display = "none";
+    document.getElementById("cancel").style.display = "none";
+    document.getElementById("save-contact").innerHTML = "Save changes";
+
 
     for (i=0; i<contacts.length; i++) {
       if (contacts[i].id == id) {
