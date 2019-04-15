@@ -50,6 +50,10 @@ In order to keep my contact list up to date
 I would like to be able to delete contacts
 ````
 
+# Deployed site
+
+Check out the deployed site [here](https://leiter007.github.io/address-book/).
+
 # Built with
 
 [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |
